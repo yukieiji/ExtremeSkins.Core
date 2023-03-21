@@ -2,7 +2,7 @@
 
 namespace ExtremeSkins.Core.ExtremeHats;
 
-public static class HatDataStructure
+public static class DataStructure
 {
     public const string FrontImageName     = "front.png";
     public const string FrontFlipImageName = "front_flip.png";
