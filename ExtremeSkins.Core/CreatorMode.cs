@@ -33,13 +33,38 @@ public static class CreatorMode
         Irish
     }
 
+    public static StreamWriter CreateTranslationWriter(string amongUsPath)
+    {
+        CreateCreatorModeFolder(amongUsPath);
+
+        using StreamWriter transCsv = new StreamWriter(
+            GetTranslationCsvPath(amongUsPath), false, new UTF8Encoding(true));
+
+        List<string> langList = new List<string>();
+
+        foreach (SupportedLangs enumValue in Enum.GetValues(typeof(SupportedLangs)))
+        {
+            langList.Add(enumValue.ToString());
+        }
+
+        transCsv.WriteLine(
+            string.Format(
+                "{1}{0}{2}",
+                Comma,
+                "TransKey",
+                string.Join(Comma, langList)));
+
+        return transCsv;
+    }
+
+    public static StreamReader GetTranslationReader(string amongUsPath)
+        => new StreamReader(GetTranslationCsvPath(amongUsPath), new UTF8Encoding(true));
 
     public static StreamWriter GetTranslationWriter(string amongUsPath)
     {
         CreateCreatorModeFolder(amongUsPath);
-        string csvFile = Path.Combine(amongUsPath, CreatorModeFolder, TranslationCsvFile);
-
-        bool isFileExist = File.Exists(csvFile);
+        string csvFile = GetTranslationCsvPath(amongUsPath);
+        bool isFileExist = IsExistTransFile(amongUsPath);
 
         using StreamWriter transCsv = new StreamWriter(
             csvFile, isFileExist, new UTF8Encoding(true));
@@ -62,6 +87,12 @@ public static class CreatorMode
         }
 
         return transCsv;
+    }
+
+    public static bool IsExistTransFile(string amongUsPath)
+    {
+        string csvFile = Path.Combine(amongUsPath, CreatorModeFolder, TranslationCsvFile);
+        return File.Exists(csvFile);
     }
 
     public static void SetCreatorMode(string amongUsPath, bool active)
@@ -90,4 +121,7 @@ public static class CreatorMode
             Directory.CreateDirectory(csvFolder);
         }
     }
+
+    private static string GetTranslationCsvPath(string amongUsPath)
+        => Path.Combine(amongUsPath, CreatorModeFolder, TranslationCsvFile);
 }
