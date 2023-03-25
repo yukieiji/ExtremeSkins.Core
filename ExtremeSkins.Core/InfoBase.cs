@@ -14,10 +14,10 @@ public abstract record InfoBase(string Name, string Author)
         WriteIndented = true,
     };
 
-    public void ExportToJson(string targetPath)
+    public static void ExportToJson<T>(T info, string targetPath) where T : InfoBase
     {
         File.WriteAllText(
             Path.Combine(targetPath, JsonName),
-            JsonSerializer.Serialize(this, JsonSerializeOption));
+            JsonSerializer.Serialize(info, JsonSerializeOption));
     }
 }
