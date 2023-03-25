@@ -105,8 +105,8 @@ public static class CreatorMode
             text = cfg.ReadToEnd();
         }
         text = text.Replace(
-            string.Format(creatorModePlaceHolder, !active),
-            string.Format(creatorModePlaceHolder, active));
+            string.Format(creatorModePlaceHolder, (!active).ToString().ToLower()),
+            string.Format(creatorModePlaceHolder, active.ToString().ToLower()));
 
         using var newCfg = new StreamWriter(cfgPath, false, new UTF8Encoding(true));
         newCfg.Write(text);
