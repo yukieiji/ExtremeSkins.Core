@@ -37,7 +37,7 @@ public static class CreatorMode
     {
         CreateCreatorModeFolder(amongUsPath);
 
-        using StreamWriter transCsv = new StreamWriter(
+        StreamWriter transCsv = new StreamWriter(
             GetTranslationCsvPath(amongUsPath), false, new UTF8Encoding(true));
 
         List<string> langList = new List<string>();
@@ -66,7 +66,7 @@ public static class CreatorMode
         string csvFile = GetTranslationCsvPath(amongUsPath);
         bool isFileExist = IsExistTransFile(amongUsPath);
 
-        using StreamWriter transCsv = new StreamWriter(
+        StreamWriter transCsv = new StreamWriter(
             csvFile, isFileExist, new UTF8Encoding(true));
 
         if (!isFileExist)
