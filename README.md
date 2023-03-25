@@ -1,1 +1,2 @@
 # ExtremeSkins.Core
+- ExtremeSkinsの各種データ構造やjsonファイル、configファイルのハンドラー等を使用できるクラスライブラリです
