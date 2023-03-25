@@ -4,6 +4,7 @@ namespace ExtremeSkins.Core.ExtremeVisor;
 
 public static class DataStructure
 {
+    public const string FolderName = "ExtremeVisor";
     public const string IdleImageName = "idle.png";
     public const string FlipIdleImageName = "flip_idle.png";
 
