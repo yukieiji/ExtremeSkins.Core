@@ -33,6 +33,16 @@ public static class CreatorMode
         Irish
     }
 
+    public static void CreateCreatorModeFolder(string targetPath)
+    {
+        string creatorModePath = Path.Combine(targetPath, CreatorModeFolder);
+
+        if (!Directory.Exists(creatorModePath))
+        {
+            Directory.CreateDirectory(creatorModePath);
+        }
+    }
+
     public static StreamWriter CreateTranslationWriter(string amongUsPath)
     {
         CreateCreatorModeFolder(amongUsPath);
@@ -110,16 +120,6 @@ public static class CreatorMode
 
         using var newCfg = new StreamWriter(cfgPath, false, new UTF8Encoding(true));
         newCfg.Write(text);
-    }
-
-    private static void CreateCreatorModeFolder(string targetPath)
-    {
-        string csvFolder = Path.Combine(targetPath, CreatorModeFolder);
-
-        if (!Directory.Exists(csvFolder))
-        {
-            Directory.CreateDirectory(csvFolder);
-        }
     }
 
     private static string GetTranslationCsvPath(string amongUsPath)
