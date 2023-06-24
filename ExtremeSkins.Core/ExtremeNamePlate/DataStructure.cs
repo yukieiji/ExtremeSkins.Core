@@ -5,6 +5,8 @@ namespace ExtremeSkins.Core.ExtremeNamePlate;
 public static class DataStructure
 {
     public const string FolderName = "ExtremeNamePlate";
+    public const string LangFolder = "LanguageData";
+
     public static string GetNamePlatePath(string npParentPath, string autherName, string namePlateName)
         => Path.Combine(npParentPath, autherName, $"{namePlateName}.png");
 }

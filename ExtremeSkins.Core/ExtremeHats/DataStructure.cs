@@ -4,7 +4,9 @@ namespace ExtremeSkins.Core.ExtremeHats;
 
 public static class DataStructure
 {
-    public const string FolderName = "ExtremeHat";
+    public const string FolderName         = "ExtremeHat";
+    public const string LangFolder         = "LanguageData";
+
     public const string FrontImageName     = "front.png";
     public const string FrontFlipImageName = "front_flip.png";
     public const string BackImageName      = "back.png";
